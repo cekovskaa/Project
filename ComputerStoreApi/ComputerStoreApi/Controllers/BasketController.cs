@@ -29,7 +29,13 @@ namespace ComputerStoreApi.Controllers
             
             var product = await _productRepository.GetProductByIdAsync(productInput.Id, includeCategory: true);
 
-            _basket.AddProduct(product, quantity);
+            var response = _basket.AddProduct(product, quantity);
+
+            if (response != 0)
+            {
+                return BadRequest(new { message = "The quality exceed the available stock by " + response + "!" });
+            }
+
             return Ok();
         }
 

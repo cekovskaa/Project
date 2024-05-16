@@ -271,3 +271,4 @@ C:\Users\angce\Desktop\ComputerStoreProject\ComputerStoreApi\ComputerStoreApi\bi
 C:\Users\angce\Desktop\ComputerStoreProject\ComputerStoreApi\ComputerStoreApi\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\angce\Desktop\ComputerStoreProject\ComputerStoreApi\ComputerStoreApi\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\angce\Desktop\ComputerStoreProject\ComputerStoreApi\ComputerStoreApi\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\angce\Desktop\ComputerStoreProject\ComputerStoreApi\ComputerStoreApi\obj\Debug\net8.0\ComputerStoreApi.sourcelink.json

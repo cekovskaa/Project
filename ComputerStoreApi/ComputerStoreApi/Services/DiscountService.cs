@@ -19,29 +19,38 @@ namespace ComputerStoreApi.Services
             decimal totalPrice = 0;
             decimal totalDiscount = 0;
 
-            
-            var groupedItems = basket.Items.GroupBy(i => i.Product.CategoryId);
 
-            foreach (var group in groupedItems)
+            var categories = basket.Items.GroupBy(i => i.Product.CategoryId);
+
+            foreach (var category in categories)
             {
-                for (int i = 0; i < group.Count(); i++)
+                for (int i = 0; i < category.Count(); i++)
                 {
-                    var item = group.ElementAt(i);
+                    var item = category.ElementAt(i);
                     var price = item.Product.Price * item.Quantity;
-
-                    
-                    if (i == 0 && group.Count() > 1)
-                    {
-                        var discount = price * 0.05m; 
-                        price -= discount; 
-                        totalDiscount += discount; 
-                    }
 
                     totalPrice += price;
                 }
+
+                var totalItems = 0;
+                for (int i = 0; i < category.Count(); i++) {
+                    var item = category.ElementAt(i);
+                    totalItems += item.Quantity;
+                }
+
+                if (totalItems > 1) {
+                    var eligibleItems = category.Distinct();
+
+                    for (int i = 0; i < eligibleItems.Count(); i++)
+                    {
+                        var item = eligibleItems.ElementAt(i);
+                        var discountAmount = item.Product.Price * (decimal)0.05;
+                        totalDiscount += discountAmount;
+                    }
+                }
             }
 
-            return (totalPrice, totalDiscount);
+            return (totalPrice-totalDiscount, totalDiscount);
         }
 
     }
